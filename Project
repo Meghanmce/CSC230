@@ -319,7 +319,8 @@ int main()
 		cout << "1.  Input new record." << endl;
 		cout << "2.  Search for record." << endl;
 		cout << "3.  Print records on screen." << endl;
-		cout << "4.  Quit Program." << endl;
+		cout << "4.  Modify or Delete a record." << endl;
+		cout << "5.  Quit Program." << endl;
 		cout << endl;
 
 		cin >> choice;
@@ -336,13 +337,16 @@ int main()
 				printDataToScreen();
 				break;
 			case 4:
+				modifyOrDelete();
+				break;
+			case 5:
 				cout << "...Ending Program..." << endl;
 				break;
 			default:
 				cout << "Not a choice..." << endl;
 				break;
 		}
-	} while (choice != 4);
+	} while (choice != 5);
 	
   return 0;
 }
