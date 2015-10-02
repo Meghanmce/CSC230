@@ -265,6 +265,11 @@ void checkPassword() {
 	}
 }
 
+void splitPhone(string c)
+{
+	
+}
+
 int main()
 {
 	int choice;
