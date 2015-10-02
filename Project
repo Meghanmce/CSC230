@@ -266,12 +266,16 @@ void checkPassword() {
 
 int main()
 {
-  	int choice;
-
+	int choice;
+	cout << "Enter the number of the choice you want: " << endl;
+	cout << "1. Log in as user." << endl;
+	cout << "2. Log in as admin." << endl;
+		
 	//MAIN MENU for User, ((NOT ADMIN!))
 	do
 	{
 		createVectors();
+		
 
 		cout << endl;
 		cout << " --- MAIN MENU --- " << endl;
