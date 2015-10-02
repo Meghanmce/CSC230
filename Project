@@ -4,7 +4,6 @@
 #include <vector>
 #include <sstream>
 
-
 using namespace std;
 
 std::vector<vector<string> > A;
@@ -247,11 +246,10 @@ void checkPassword() {
 	string password="csc230";
 	string Input; 
 	
-
 	cout << "To access employee details, please enter the password: ";
-	getline(cin, Input);
+	cin >> Input;
 
-	if (Input.compare(password) !=0){
+	while (Input.compare(password) !=0 ){
 		cout << "I'm sorry, but the password you entered is incorrect. \n";
 		cout << "Please try again." << endl;
 		// system("pause");
@@ -263,11 +261,6 @@ void checkPassword() {
 		// system("pause");
 		// return 0;
 	}
-}
-
-void splitPhone(string c)
-{
-	
 }
 
 int main()
