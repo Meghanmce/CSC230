@@ -270,6 +270,13 @@ int main()
 	cout << "Enter the number of the choice you want: " << endl;
 	cout << "1. Log in as user." << endl;
 	cout << "2. Log in as admin." << endl;
+	
+	cin >> choice;
+	
+	if(choice == 2)
+	{
+		checkPassword();
+	}
 		
 	//MAIN MENU for User, ((NOT ADMIN!))
 	do
