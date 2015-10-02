@@ -6,8 +6,8 @@
 
 using namespace std;
 
-std::vector<vector<string> > A;
-std::vector<string> B;
+std::vector<vector<string> > A;  //Vector collection of lines of data from B
+std::vector<string> B;		 //Vector with specific data like first name, last name
 
 //Input All User's Data into the File (not the vector)
 void input()
