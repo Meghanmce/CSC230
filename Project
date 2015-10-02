@@ -241,6 +241,29 @@ void searchMenu()
 	} while (pick != 3);
 }
 
+void checkPassword() {
+	public: 
+	string password="csc230";
+	string Input; 
+	
+
+	cout << "To access employee details, please enter the password: ";
+	getline(cin, Input);
+
+	if (Input.compare(password) !=0){
+		cout << "I'm sorry, but the password you entered is incorrect. \n";
+		cout << "Please try again." << endl;
+		// system("pause");
+	}
+		
+ 
+	else if(Input.compare(password) != 1) {
+		cout << "Access is granted. \n";
+		// system("pause");
+		// return 0;
+	}
+}
+
 int main()
 {
   	int choice;
