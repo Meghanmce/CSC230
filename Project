@@ -242,7 +242,7 @@ void searchMenu()
 }
 
 void checkPassword() {
-	public: 
+	
 	string password="csc230";
 	string Input; 
 	
