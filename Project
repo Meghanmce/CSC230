@@ -21,59 +21,128 @@ void input()
 		//Temp Variables
 		string firstName, lastName, email_ID, phoneNumber, street, city, state,
 		vehicleType, vehicleModel, vehicleColor, aptNum, zipcode, vehicleTagNum;
+		
+		string none = "N/A";
+		
+		cout << "Enter 'q' if N/A" << endl;
 
 		//Enter Variables into file
 		cout << "Enter first name: " << endl;    
-		cin >> firstName;  
-		myfile << firstName << " ";
+		cin >> firstName; 
+		if(firstName == "q"){
+			myfile << none << " ";	
+		}
+		else{
+			myfile << firstName << " ";
+		}
 
 		cout<< "Enter last name: " << endl;
 		cin >> lastName;
-		myfile << lastName << " ";
+		if(lastName == "q"){
+			myfile << none << " ";	
+		}
+		else{
+			myfile << lastName << " ";
+		}
 
 		cout << "Enter email: " << endl;
 		cin >> email_ID;
-		myfile << email_ID << " ";
+		if(email_ID == "q"){
+			myfile << none << " ";	
+		}
+		else{
+			myfile << email_ID << " ";
+		}
 
 		cout << "Enter phone number (XXX-XXX-XXXX): " << endl;
 		cin >> phoneNumber;
-		myfile << phoneNumber << " ";
+		if(phoneNumber == "q"){
+			myfile << none << " ";	
+		}
+		else{
+			myfile << phoneNumber << " ";
+		}
 
 		cout << "Enter apartment number: " << endl;
 		cin >> aptNum;
-		myfile << aptNum << " ";
+		if(aptNum == "q"){
+			myfile << none << " ";	
+		}
+		else{
+			myfile << aptNum << " ";
+		}
 
 		cout << "Enter street address: " << endl;
 		cin >> street;
-		myfile << street << " ";
+		if(street == "q"){
+			myfile << none << " ";	
+		}
+		else{
+			myfile << street << " ";
+		}
 
 		cout << "Enter state (XX): " << endl;
 		cin >> state;
-		myfile << state << " ";
+		if(state == "q"){
+			myfile << none << " ";	
+		}
+		else{
+			myfile << state << " ";
+		}
 
 		cout << "Enter city: " << endl;
 		cin >> city;
-		myfile << city << " ";
+		if(city == "q"){
+			myfile << none << " ";	
+		}
+		else{
+			myfile << city << " ";
+		}
 
 		cout << "Enter zipcode: " << endl;
 		cin >> zipcode;
-		myfile << zipcode << " ";
+		if(zipcode == "q"){
+			myfile << none << " ";	
+		}
+		else{
+			myfile << zipcode << " ";
+		}
 
 		cout << "Enter vehicle type: " << endl;
 		cin >> vehicleType;
-		myfile << vehicleType << " ";
+		if(vehicleType == "q"){
+			myfile << none << " ";	
+		}
+		else{
+			myfile << vehicleType << " ";
+		}
 
 		cout << "Enter vehicle model: " << endl;
 		cin >> vehicleModel;
-		myfile << vehicleModel << " ";
+		if(vehicleModel == "q"){
+			myfile << none << " ";	
+		}
+		else{
+			myfile << vehicleModel << " ";
+		}
 
 		cout << "Enter vehicle color: " << endl;
 		cin >> vehicleColor;
-		myfile << vehicleColor << " ";
+		if(vehicleColor == "q"){
+			myfile << none << " ";	
+		}
+		else{
+			myfile << vehicleColor << " ";
+		}
 
 		cout << "Enter vehicle tag number: " << endl;
 		cin >> vehicleTagNum;
-		myfile << vehicleTagNum << " ";
+		if(vehicleTagNum == "q"){
+			myfile << none << " ";	
+		}
+		else{
+			myfile << vehicleTagNum << " ";
+		}
 	}
 }
 
