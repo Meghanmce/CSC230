@@ -262,6 +262,38 @@ void checkPassword() {
 	}
 }
 
+void splitPhone(string c) //to split phone# and convert
+{
+	//changes any dashes to a space
+	for(int i = 0; i < c.length(); i ++)	
+	{
+		
+		if(c[i] == '-')						
+		{									
+			c[i] = ' ';						
+		}
+	}
+	
+	
+	vector<string> s2; 
+	stringstream tt(c); 
+	string temp2; 
+	
+	//gets rid of white spaces and puts #s from string to vector<string> "s2"
+	while(tt >> temp2) 
+	{
+		s2.push_back(temp2); 
+	}
+	
+	
+	
+	string combinePhone = ""+s2[0]+s2[1]+s2[2]; //puts the phone # back together w/o dashes
+	
+	long finalPhone = strtol(combinePhone.c_str(), NULL, 0); //converts string "combinePhone" to a long
+	
+	cout << finalPhone; //prints the converted phone#
+}
+
 int main()
 {
 	int choice;
