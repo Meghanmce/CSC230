@@ -6,7 +6,273 @@
 
 using namespace std;
 
+std::vector<vector<string> > A;
+std::vector<string> B;
+
+void input()
+{
+	ofstream myfile("Spreadsheet.txt", std::ios_base::app);
+
+	if(myfile.is_open())
+	{
+		//Add breaks between lines of data
+		myfile << '\n';
+
+		//Temp Variables
+		string firstName, lastName, email_ID, phoneNumber, street, city, state,
+		vehicleType, vehicleModel, vehicleColor, aptNum, zipcode, vehicleTagNum;
+
+		//Enter Variables
+		cout << "Enter first name: " << endl;    
+		cin >> firstName;  
+		myfile << firstName << " ";
+
+		cout<< "Enter last name: " << endl;
+		cin >> lastName;
+		myfile << lastName << " ";
+
+		cout << "Enter email: " << endl;
+		cin >> email_ID;
+		myfile << email_ID << " ";
+
+		cout << "Enter phone number (XXX-XXX-XXXX): " << endl;
+		cin >> phoneNumber;
+		myfile << phoneNumber << " ";
+
+		cout << "Enter apartment number: " << endl;
+		cin >> aptNum;
+		myfile << aptNum << " ";
+
+		cout << "Enter street address: " << endl;
+		cin >> street;
+		myfile << street << " ";
+
+		cout << "Enter state (XX): " << endl;
+		cin >> state;
+		myfile << state << " ";
+
+		cout << "Enter city: " << endl;
+		cin >> city;
+		myfile << city << " ";
+
+		cout << "Enter zipcode: " << endl;
+		cin >> zipcode;
+		myfile << zipcode << " ";
+
+		cout << "Enter vehicle type: " << endl;
+		cin >> vehicleType;
+		myfile << vehicleType << " ";
+
+		cout << "Enter vehicle model: " << endl;
+		cin >> vehicleModel;
+		myfile << vehicleModel << " ";
+
+		cout << "Enter vehicle color: " << endl;
+		cin >> vehicleColor;
+		myfile << vehicleColor << " ";
+
+		cout << "Enter vehicle tag number: " << endl;
+		cin >> vehicleTagNum;
+		myfile << vehicleTagNum << " ";
+	}
+}
+
+void createVectors()
+{
+	A.clear();
+	B.clear();
+
+	ifstream infile("Spreadsheet.txt");
+
+	if(!infile)
+	{
+		cerr << "Could not open file." << endl;
+		return;
+	}
+
+	vector<string> lines;
+	string line;
+	while(getline(infile, line))
+	{
+		lines.push_back(line);
+	}
+
+	infile.close();
+
+	for(int i = 0; i < lines.size(); i++)
+	{
+		B.clear();
+		string s = lines[i];
+
+		string temp;
+		stringstream ss(s);
+
+		while(ss >> temp)
+		{
+			B.push_back(temp);
+		}
+
+		A.push_back(B);
+	}
+
+}
+
+void printDataToScreen()
+{
+	for(int i = 0; i < A.size(); i++)
+	{
+		for (int j = 0; j < A[i].size(); j++)
+		{
+			cout << A[i][j] << " ";
+		}
+		cout << endl;
+	}
+}
+
+void searchByFirstName()
+{
+	cout << endl;
+	cout << "What is the first name of who you are searching for?" << endl;
+
+	string userInput;
+	cin >> userInput;
+
+	for(int i = 0; i < A.size(); i++)
+	{
+		for(int j = 0; j < A[i].size(); j++)
+		{
+			if (A[i][j] == userInput)
+			{
+				cout << endl;
+				cout << "First Name         : " << A[i][j] << endl;
+				cout << "Last Name          : " << A[i][j+1] << endl;
+				cout << "Email Address      : " << A[i][j+2] << endl;
+				cout << "Phone Number       : " << A[i][j+3] << endl;
+				cout << "Apartment Number   : " << A[i][j+4] << endl;
+				cout << "Address            : " << A[i][j+5] << endl;
+				cout << "State              : " << A[i][j+6] << endl;
+				cout << "City               : " << A[i][j+7] << endl;
+				cout << "Zipcode            : " << A[i][j+8] << endl;
+				cout << "Vehicle Type       : " << A[i][j+9] << endl;
+				cout << "Vehicle Model      : " << A[i][j+10] << endl;
+				cout << "Vehicle Color      : " << A[i][j+11] << endl;
+				cout << "Vehicle Tag Number : " << A[i][j+12] << endl;
+				cout << endl;
+				cout << "Search Completed." << endl;
+				cout << endl;
+			}
+		}
+	}
+}
+
+void searchByLastName()
+{
+	cout << endl;
+	cout << "What is the last name of who you are searching for?" << endl;
+
+	string userInput;
+	cin >> userInput;
+
+	for(int i = 0; i < A.size(); i++)
+	{
+		for(int j = 0; j < A[i].size(); j++)
+		{
+			if (A[i][j] == userInput)
+			{
+				cout << endl;
+				cout << "First Name         : " << A[i][j-1] << endl;
+				cout << "Last Name          : " << A[i][j] << endl;
+				cout << "Email Address      : " << A[i][j+1] << endl;
+				cout << "Phone Number       : " << A[i][j+2] << endl;
+				cout << "Apartment Number   : " << A[i][j+3] << endl;
+				cout << "Address            : " << A[i][j+4] << endl;
+				cout << "State              : " << A[i][j+5] << endl;
+				cout << "City               : " << A[i][j+6] << endl;
+				cout << "Zipcode            : " << A[i][j+7] << endl;
+				cout << "Vehicle Type       : " << A[i][j+8] << endl;
+				cout << "Vehicle Model      : " << A[i][j+9] << endl;
+				cout << "Vehicle Color      : " << A[i][j+10] << endl;
+				cout << "Vehicle Tag Number : " << A[i][j+11] << endl;
+				cout << endl;
+				cout << "Search Completed." << endl;
+				cout << endl;
+			}
+		}
+	}
+}
+
+void searchMenu()
+{
+	int pick;
+
+	do
+	{
+		cout << endl;
+		cout << " --- SEARCH MENU --- " << endl;
+		cout << endl;
+		cout << "1.  Search by first name" << endl;
+		cout << "2.  Search by last name" << endl;
+		cout << "3.  Quit search" << endl;
+		cout << endl;
+
+		cin >> pick;
+
+		switch(pick)
+		{
+			case 1:
+				searchByFirstName();
+				break;
+			case 2:
+				searchByLastName();
+				break;
+			case 3:
+				break;
+			default:
+				cout << "Not a choice..." << endl;
+				break;
+		} 
+	} while (pick != 3);
+}
+
 int main()
 {
+  	int choice;
+
+	//MAIN MENU
+	do
+	{
+		createVectors();
+
+		cout << endl;
+		cout << " --- MAIN MENU --- " << endl;
+		cout << endl;
+		cout << "1.  Input new record." << endl;
+		cout << "2.  Search for record." << endl;
+		cout << "3.  Print records on screen." << endl;
+		cout << "4.  Quit Program." << endl;
+		cout << endl;
+
+		cin >> choice;
+
+		switch(choice)
+		{
+			case 1:
+				input();
+				break;
+			case 2:
+				searchMenu();
+				break;
+			case 3:
+				printDataToScreen();
+				break;
+			case 4:
+				cout << "...Ending Program..." << endl;
+				break;
+			default:
+				cout << "Not a choice..." << endl;
+				break;
+		}
+	} while (choice != 4);
+	
   return 0;
 }
