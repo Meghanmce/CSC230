@@ -9,10 +9,10 @@ using namespace std;
 std::vector<vector<string> > A;
 std::vector<string> B;
 
+//Input All User's Data into the File (not the vector)
 void input()
 {
 	ofstream myfile("Spreadsheet.txt", std::ios_base::app);
-
 	if(myfile.is_open())
 	{
 		//Add breaks between lines of data
@@ -22,7 +22,7 @@ void input()
 		string firstName, lastName, email_ID, phoneNumber, street, city, state,
 		vehicleType, vehicleModel, vehicleColor, aptNum, zipcode, vehicleTagNum;
 
-		//Enter Variables
+		//Enter Variables into file
 		cout << "Enter first name: " << endl;    
 		cin >> firstName;  
 		myfile << firstName << " ";
@@ -77,28 +77,29 @@ void input()
 	}
 }
 
+//sets up the 2D vector A
 void createVectors()
 {
 	A.clear();
 	B.clear();
 
 	ifstream infile("Spreadsheet.txt");
-
 	if(!infile)
 	{
 		cerr << "Could not open file." << endl;
 		return;
 	}
 
+	//A vector of lines from the text file is set up
 	vector<string> lines;
 	string line;
 	while(getline(infile, line))
 	{
 		lines.push_back(line);
 	}
-
 	infile.close();
 
+	//The lines from the lines vector are put into vector B, which vector A is made up of
 	for(int i = 0; i < lines.size(); i++)
 	{
 		B.clear();
@@ -111,12 +112,13 @@ void createVectors()
 		{
 			B.push_back(temp);
 		}
-
+		
 		A.push_back(B);
 	}
 
 }
 
+//(For testing purposes) Prints all of the data to the screen
 void printDataToScreen()
 {
 	for(int i = 0; i < A.size(); i++)
@@ -129,6 +131,7 @@ void printDataToScreen()
 	}
 }
 
+//Search by first name, returns all people with the first name
 void searchByFirstName()
 {
 	cout << endl;
@@ -136,7 +139,8 @@ void searchByFirstName()
 
 	string userInput;
 	cin >> userInput;
-
+	
+	//search through the vector for the person
 	for(int i = 0; i < A.size(); i++)
 	{
 		for(int j = 0; j < A[i].size(); j++)
@@ -165,6 +169,7 @@ void searchByFirstName()
 	}
 }
 
+//searches by last name, returns all people with the last name
 void searchByLastName()
 {
 	cout << endl;
@@ -173,6 +178,7 @@ void searchByLastName()
 	string userInput;
 	cin >> userInput;
 
+	//traverse the vector for the person
 	for(int i = 0; i < A.size(); i++)
 	{
 		for(int j = 0; j < A[i].size(); j++)
@@ -201,6 +207,7 @@ void searchByLastName()
 	}
 }
 
+//SEARCH MENU controls all searching functions
 void searchMenu()
 {
 	int pick;
@@ -238,7 +245,7 @@ int main()
 {
   	int choice;
 
-	//MAIN MENU
+	//MAIN MENU for User, ((NOT ADMIN!))
 	do
 	{
 		createVectors();
