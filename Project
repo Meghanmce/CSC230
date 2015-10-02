@@ -241,7 +241,7 @@ void searchMenu()
 	} while (pick != 3);
 }
 
-void checkPassword() {
+bool checkPassword() {
 	
 	string password="csc230";
 	string Input; 
@@ -252,13 +252,12 @@ void checkPassword() {
 
 		cout << "I'm sorry, but the password you entered is incorrect. \n";
 		cout << "Please try again." << endl;
-		// system("pause");
+		return false;
 	}
  
 	if(Input.compare(password) != 1) {
 		cout << "Access is granted. \n";
-		// system("pause");
-		// return 0;
+		return true;
 	}
 }
 
