@@ -241,10 +241,12 @@ void searchMenu()
 	} while (pick != 3);
 }
 
-bool checkPassword() {
+void checkPassword() {
 	
 	string password="csc230";
 	string Input; 
+	
+	bool isRight;
 
 	while (Input != password){
 		cout << "To access employee details, please enter the password: ";
@@ -260,6 +262,29 @@ bool checkPassword() {
 		return true;
 	}
 }
+
+void modifyOrDelete()
+{
+	//CHeck the password
+	//if the password is wrong, return out of the method
+	//if the password is right...
+	
+	cout << Do you want to 1. Modify or 2. Delete? << endl;
+	int choose;
+	cin >> choose;
+	
+	if(choose == 1)   //MODIFY
+	{
+	}
+	else if(choose == 2)  //DELETE
+	{
+	}
+	else
+	{
+		cout << "Not a choice, returning to main menu..." << endl;
+	}
+}
+
 
 void splitPhone(string c) //to split phone# and convert
 {
