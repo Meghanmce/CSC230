@@ -310,26 +310,36 @@ void searchMenu()
 	} while (pick != 3);
 }
 
-void checkPassword() {
+bool checkPassword() {
 	
-	string password="csc230";
-	string Input; 
-	
-	bool isRight;
+	const string password = "csc230";
+	string input; 
 
-	while (Input != password){
-		cout << "To access employee details, please enter the password: ";
-		cin >> Input;
+	cout << "Enter the password: ";
+	cin >> input;
 
-		cout << "I'm sorry, but the password you entered is incorrect. \n";
-		cout << "Please try again." << endl;
-		return false;
-	}
- 
-	if(Input.compare(password) != 1) {
-		cout << "Access is granted. \n";
+	if(input == password)
+	{
 		return true;
 	}
+ 	else
+ 	{
+ 		for(int i = 3; i > 0; i--)
+ 		{
+ 			cout << endl;
+ 			cout << "Password incorrect, " << i << " attempt(s) remaining." << endl;
+
+ 			cout << "Re-enter password: ";
+ 			cin >> input;
+
+ 			if(input == password)
+ 			{
+ 				return true;
+ 			}
+  		}
+ 	}
+
+ 	return false;
 }
 
 void modifyOrDelete()
@@ -338,7 +348,7 @@ void modifyOrDelete()
 	//if the password is wrong, return out of the method
 	//if the password is right...
 	
-	cout << Do you want to 1. Modify or 2. Delete? << endl;
+	cout << "Do you want to 1. Modify or 2. Delete?" << endl;
 	int choose;
 	cin >> choose;
 	
@@ -387,7 +397,7 @@ void splitPhone(string c) //to split phone# and convert
 	cout << finalPhone; //prints the converted phone#
 }
 
-int main()
+int main()  //Contains 2 menus, ADMIN and USER
 {
 	int choice;
 	cout << "Enter the number of the choice you want: " << endl;
@@ -395,10 +405,55 @@ int main()
 	cout << "2. Log in as admin." << endl;
 	
 	cin >> choice;
-	
+
 	if(choice == 2)
 	{
-		checkPassword();
+		if(checkPassword())
+		{
+			//ADMIN MAIN MENU
+			do
+			{
+				createVectors();
+
+				cout << endl;
+				cout << " --- ADMIN MAIN MENU --- " << endl;
+				cout << endl;
+				cout << "1.  Input new record." << endl;
+				cout << "2.  Search for record." << endl;
+				cout << "3.  Print records on screen." << endl;
+				cout << "4.  Modify or Delete a record." << endl;
+				cout << "5.  Quit Program." << endl;
+				cout << endl;
+
+				cin >> choice;
+
+				switch(choice)
+				{
+					case 1:
+						input();
+						break;
+					case 2:
+						searchMenu();
+						break;
+					case 3:
+						printDataToScreen();
+						break;
+					case 4:
+						modifyOrDelete();
+						break;
+					case 5:
+						cout << "...Ending Program..." << endl;
+						break;
+					default:
+						cout << "Not a choice..." << endl;
+						break;
+				}
+			} while (choice != 5);
+
+			return 0;
+		}
+
+		cout << "Sorry, access not granted to admin." << endl;
 	}
 		
 	//MAIN MENU for User, ((NOT ADMIN!))
