@@ -187,19 +187,6 @@ void createVectors()
 
 }
 
-//(For testing purposes) Prints all of the data to the screen
-void printDataToScreen()
-{
-	for(int i = 0; i < A.size(); i++)
-	{
-		for (int j = 0; j < A[i].size(); j++)
-		{
-			cout << A[i][j] << " ";
-		}
-		cout << endl;
-	}
-}
-
 //Search by first name, returns all people with the first name
 void searchByFirstName()
 {
@@ -342,41 +329,16 @@ bool checkPassword() {
  	return false;
 }
 
-void modifyOrDelete()
-{
-	//CHeck the password
-	//if the password is wrong, return out of the method
-	//if the password is right...
-	
-	cout << "Do you want to 1. Modify or 2. Delete?" << endl;
-	int choose;
-	cin >> choose;
-	
-	if(choose == 1)   //MODIFY
-	{
-	}
-	else if(choose == 2)  //DELETE
-	{
-	}
-	else
-	{
-		cout << "Not a choice, returning to main menu..." << endl;
-	}
-}
-
-
 void splitPhone(string c) //to split phone# and convert
 {
 	//changes any dashes to a space
-	for(int i = 0; i < c.length(); i ++)	
+	for(int i = 0; i < c.length(); i++)	
 	{
-		
 		if(c[i] == '-')						
 		{									
 			c[i] = ' ';						
 		}
 	}
-	
 	
 	vector<string> s2; 
 	stringstream tt(c); 
@@ -388,8 +350,6 @@ void splitPhone(string c) //to split phone# and convert
 		s2.push_back(temp2); 
 	}
 	
-	
-	
 	string combinePhone = ""+s2[0]+s2[1]+s2[2]; //puts the phone # back together w/o dashes
 	
 	long finalPhone = strtol(combinePhone.c_str(), NULL, 0); //converts string "combinePhone" to a long
@@ -397,7 +357,86 @@ void splitPhone(string c) //to split phone# and convert
 	cout << finalPhone; //prints the converted phone#
 }
 
-int main()  //Contains 2 menus, ADMIN and USER
+//(For testing purposes) Prints all of the data to the screen
+void printDataToScreen()
+{
+	for(int i = 0; i < A.size(); i++)
+	{
+		for (int j = 0; j < A[i].size(); j++)
+		{
+			if(j != 3)
+			{
+				cout << A[i][j] << " ";
+			}
+			else
+			{
+				string phoneNum = A[i][j];
+				splitPhone(phoneNum);
+				cout << " ";
+			}
+		}
+		cout << endl;
+	}
+}
+
+void modifyOrDelete()
+{
+	//Check the password
+	//if the password is wrong, return out of the method
+	//if the password is right...
+	
+	cout << "Do you want to 1. Modify or 2. Delete?" << endl;
+	int choose;
+	cin >> choose;
+	
+	if(choose == 1)   //MODIFY
+	{
+
+	}
+	else if(choose == 2)  //DELETE
+	{
+		cout << "What is the last name of the person you want to delete?" << endl;
+
+		string userInput;
+		cin >> userInput;
+
+		int recordToDelete;     
+
+		for(int i = 0; i < A.size(); i++)
+		{
+			for(int j = 0; j < A[i].size(); j++)
+			{
+				if (A[i][j] == userInput)
+				{
+					A.erase(A.begin() + i);      //Delete the record with this last name
+
+				}
+			}
+		}
+
+		string fileInput;
+		//Save your changes to file
+		ofstream myfile("Spreadsheet.txt");
+		for(int i = 0; i < A.size(); i++)
+		{
+			for(int j = 0; j < A[i].size(); j++)
+			{
+				fileInput = A[i][j];
+				myfile << fileInput << " ";
+			}
+			myfile << '\n';
+		}
+
+		cout << "Record has been deleted." << endl;
+	}
+	else
+	{
+		cout << "Not a choice, returning to main menu..." << endl;
+	}
+	return;
+}
+
+int main()
 {
 	int choice;
 	cout << "Enter the number of the choice you want: " << endl;
